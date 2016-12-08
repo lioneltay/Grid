@@ -1,0 +1,121 @@
+@import url("tile.css");
+@import url("arcade.css");
+@import url("endOverlay.css");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	color: white;
+	font-family: 'Ranchers', cursive;
+	letter-spacing: 0.07em;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	background-blend-mode: multiply;
+	background-image: linear-gradient(to right, #1fdecf, #23e0ca, #1fdecf),
+	linear-gradient(to bottom, #1fdecf, #23e0ca, #1fdecf),
+	repeating-linear-gradient(
+		to right,
+		#ebebeb,
+		#ebebeb 2px,
+		transparent 2px,
+		transparent 40px
+	),
+	repeating-linear-gradient(
+		to bottom,
+		#ebebeb,
+		#ebebeb 2px,
+		transparent 2px,
+		transparent 40px
+	),
+	linear-gradient(to right, grey, white, grey),
+	linear-gradient(grey, white, grey);
+	background-color: #1958ad
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+
+
+.game {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.grid {
+	display: flex;
+	position: relative;
+	flex-wrap: wrap;
+	width: 60%;
+	min-width: 300px;
+	margin: 0 auto;
+}
+
+.grid::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	height: 2px;
+	width: 100%;
+	background-image: linear-gradient(to right, transparent, #2694ff, transparent);
+}
+
+.grid::after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 0;
+	height: 2px;
+	width: 100%;
+	background-image: linear-gradient(to right, transparent, #2694ff, transparent);
+}
+
+
+
+
+
+
+
+
+
+.Footer {
+	width: 60%;
+	min-width: 300px;
+	margin: 0 auto;
+}
+
+.Timer {
+	width: 100%;
+	margin: 0px;
+}
+
+.timeBar {
+	width: 100%;
+	display: flex;
+	height: 10px;
+	border-radius: 0 0 100px 100px;
+	-webkit-mask-image: linear-gradient(to bottom, transparent, white, white, transparent);
+  mask-image: linear-gradient(circle at center, transparent 50%, white 58%);
+}
+
+
+
+
+
+
+
+
+
+
+
+

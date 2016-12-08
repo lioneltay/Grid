@@ -1,0 +1,98 @@
+.Grid {
+	display: flex;
+	position: relative;
+	flex-wrap: wrap;
+	width: 60%;
+	min-width: 300px;
+	margin: 0 auto;
+}
+
+.Grid::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	height: 2px;
+	width: 100%;
+	background-image: linear-gradient(to right, transparent, #2694ff, transparent);
+}
+
+.Grid::after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 0;
+	height: 2px;
+	width: 100%;
+	background-image: linear-gradient(to right, transparent, #2694ff, transparent);
+}
+
+
+.Tile {
+	background: rgba(0,0,0,0.5);
+	position: relative;
+}
+
+.Tile::before {
+	content: '';
+	display: block;
+	position: absolute;
+	border-radius: 50%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	height: 80%;
+	width: 80%;
+	box-shadow: inset 0 0 50px 1px black;
+}
+
+.Tile.red::before {
+	content: '';
+	background: red;
+}
+
+.Tile.green::before {
+	content: '';
+	background: green;
+}
+
+.Tile.blue::before {
+	content: '';
+	background: blue;
+}
+
+.Tile.yellow::before {
+	content: '';
+	background: yellow;
+}
+
+.Tile.orange::before {
+	content: '';
+	background: orange;
+}
+
+
+/* Tile helpers */
+.TileInner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	height: 60%;
+	width: 60%;
+	border-radius: 50%;
+}
+
+.Tile.redError .TileInner {
+	border: 10px solid red;
+}
+
+.Tile.greenError .TileInner {
+  border: 10px solid green;
+}
+
+

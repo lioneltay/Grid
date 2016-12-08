@@ -1,0 +1,103 @@
+/* Tile */
+.tile {
+	background: rgba(0,0,0,0.5);
+	position: relative;
+}
+
+.tile::before {
+	content: '';
+	display: block;
+	position: absolute;
+	box-shadow: inset 0 0 3px 0 black;
+	border-radius: 50%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	height: 80%;
+	width: 80%;
+}
+
+.tile.unfilled::before {
+	content: '';
+	display: block;
+	background-image: radial-gradient(#4e4e4e, #212121 80%);
+}
+
+.tile.unfilled.reveal::before {
+	content: '';
+	display: block;
+	background-image: radial-gradient(#4e4e4e, #212121 80%);
+}
+
+.tile.filled::before {
+	content: '';
+	display: block;
+	background-image: radial-gradient(#AED7ED, #2571EA 80%);	
+}
+
+.tile.inPattern.reveal::before {
+	content: '';
+	display: block;
+	background-image: radial-gradient(#AED7ED, #2571EA 80%);
+}
+
+
+/* Tile helpers */
+.tileInner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	height: 60%;
+	width: 60%;
+	border-radius: 50%;
+}
+
+.tile.filled.FILLED_INCORRECTLY.show-status .tileInner::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background-image: linear-gradient(to bottom right, #B71E26 0%, #b5010a 100%);
+  -webkit-mask-image: radial-gradient(circle at center, transparent 50%, white 58%);
+  mask-image: radial-gradient(circle at center, transparent 50%, white 58%);
+	border-radius: 50%;
+}
+
+.tile.filled.FILLED_INCORRECTLY.show-status .tileInner::after {
+	content: '';
+	display: block;
+	position: absolute;
+	background-image: linear-gradient(to right, #B71E26 0%, #b5010a 100%);
+	height: 10%;
+	width: 95%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	transform: rotate(45deg);
+}
+
+.tile.unfilled.UNFILLED_INCORRECTLY.show-status .tileInner {
+	background-image: linear-gradient(to bottom right, #67BD85 0%, #3fb96a 100%);
+  -webkit-mask-image: radial-gradient(circle at center, transparent 50%, white 58%);
+  mask-image: radial-gradient(circle at center, transparent 50%, white 58%);
+}
+
+
+
+
+
+
+
+
+
