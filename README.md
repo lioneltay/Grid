@@ -1,6 +1,24 @@
 Grid
 ================
 
+TODOS
+---------
+query
+* timer
+
+transform
+* translate
+* rotate
+* reflect
+* for a particular color
+
+initialise/set ?
+* initialise grid
+* default arrangements
+* randomised
+* copy from existing grid
+
+
 API
 ---------------
 Grid function that takes configuration options and returns and object
