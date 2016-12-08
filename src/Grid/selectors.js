@@ -22,28 +22,9 @@ export const filledStatus = (tile) => tile.filledStatus
 
 
 
-/* 
-Takes a config object determining what a valid tile is, returns validity of grid
-Options: {
-	fill: bool (default true),
-	color: bool (default false)
-}
-*/
-export function getGridValid(grid, { checkFilled = true, checkColor = false } = {}) {
-	const gridTiles = tiles(grid)
-	
-	return gridTiles.every(tile => {
-		if (checkFilled && filled(tile) !== patternFilled(tile)) {
-			return false
-		}
-		
-		if (checkColor && color(tile) !== patternColor(tile)) {
-			return false
-		}
-		
-		return true
-	})
-}
+
+
+
 
 
 

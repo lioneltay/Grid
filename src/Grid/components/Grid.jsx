@@ -14,7 +14,7 @@ import * as actions from '../actions'
 
 
 
-function createGridComponent(store, options) {
+function createGridComponent(store, toggleOptions) {
 	
 	
 	
@@ -22,12 +22,11 @@ function createGridComponent(store, options) {
 	// =============================================
 	// Helper Functions
 	// =============================================
-	function generateTiles({ grid, options, showFillHelp, showColorHelp, dispatch }) {
+	function generateTiles({ grid, showFillHelp, showColorHelp, dispatch }) {
 		const tiles = s.tiles(grid)
 		const width = s.width(grid)
 		
-		const toggleFunction = actions.createTileToggler(options, dispatch)
-		console.log(toggleFunction)
+		const tileTogglerGenerator = actions.createTileTogglerGenerator(toggleOptions, dispatch)
 		
 		return tiles.map((tile, index) => {
 			const id = s.id(tile)
@@ -38,13 +37,11 @@ function createGridComponent(store, options) {
 					showFillHelp={showFillHelp}
 					showColorHelp={showColorHelp}
 					size={100/width}
-					onToggle={(id) => toggleFunction(id)}
+					onToggle={tileTogglerGenerator(id)}
 				/>
 			)
 		})
 	}
-	
-	
 	
 	// ==================================
 	// Grid Component

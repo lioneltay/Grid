@@ -1,11 +1,13 @@
+Grid
+================
 
-========================================
 API
-========================================
+---------------
 Grid function that takes configuration options and returns and object
 
 
 The object will contain
+```javascript
 {
 	Grid: (component),
 	
@@ -21,8 +23,9 @@ The object will contain
 	
 	initialiseGrid: (takes an entire grid description, OR some simpler descriptions, ie randomPattern, randomColor, numInPattern)
 }
+```
 
-
+```javascript
 state = {
 	allowInteraction: bool,
 	
@@ -37,8 +40,9 @@ state = {
 	
 	tiles: [[tiles]],
 }
+```
 
-
+```javascript
 tile {
 	filled:
 	patternFilled:
@@ -50,6 +54,19 @@ tile {
 	
 	
 }
+```
+
+Testing github markup
+--------
+```javascript
+const markup = 75
+
+const wow = function() {
+	return 'a cow'
+}
+
+console.log(() => 'Hello')
+```
 
 
 
@@ -57,12 +74,8 @@ tile {
 
 
 
-
-
-
-========================================
 MOVES/MANIPULATIONS
-========================================
+-------
 
 @@@ Colors
 

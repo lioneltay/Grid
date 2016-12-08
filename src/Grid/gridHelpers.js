@@ -1,6 +1,8 @@
 // Properties of a grid
 
 import * as c from './constants'
+import { compareObjectTypes } from 'utils/objects'
+
 
 // Checks if the given tile is valid
 export function validateTile(tile) {
@@ -25,4 +27,31 @@ export function validateTile(tile) {
 export function validateTiles(tiles) {
 	return tiles.every(tile => validateTile(tile))
 }
+
+// validates options
+export function validateOptions(options) {
+	const validOptionTypes = {
+		toggleOptions: {
+			toggleFill: 'boolean',
+			toggleColor: 'string'
+		},
+		validityOptions: {
+			checkFill: 'boolean',
+			checkColor: 'boolean'
+		}
+	}
+	
+	if (!compareObjectTypes(options, validOptionTypes)) {
+		throw new Error('Invalid Grid Options')
+	}
+	return true
+	
+}
+
+
+
+
+
+
+
 

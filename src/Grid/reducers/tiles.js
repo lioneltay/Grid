@@ -1,6 +1,7 @@
 import * as t from '../actionTypes'
 import * as c from '../constants'
 import * as s from '../selectors'
+import { validateTiles } from '../gridHelpers'
 
 import { 
 	createReducer,
@@ -72,6 +73,9 @@ const tileReducer = createReducer(tileInitialState, tileHandler)
 
 const tilesReducer = createReducer([], {
 	[t.SET_TILES](state, action) {
+		if (!validateTiles(action.tiles)) {
+			throw Error('Cannot set invalid tiles')
+		}
 		return deepCopy(action.tiles)
 	},
 	[t.SET_COLOR](state, action) {

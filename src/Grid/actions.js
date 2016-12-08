@@ -102,7 +102,7 @@ export const setUniformPatternColor = function(color) {
 
 
 
-// Reset grid
+// Reset grid //TODO
 export const resetTiles = function() {
 	return function(dispatch, getState) {
 		const numTiles = s.numTiles(getState())
@@ -112,77 +112,6 @@ export const resetTiles = function() {
 		})
 	}
 }
-
-
-
-
-
-// HIGHER ORDER ACTION CREATORS
-export function createTileToggler(options = {}, dispatch) {
-	const { toggleFill = true, toggleColor = null} = options
-	
-	return function(id) {
-		
-		function toggleTile(dispatch, getState) {			
-			
-			const tiles = s.tiles(getState())
-			const tile = s.tile(tiles, id)
-			console.log('XXXXXXX', tile, id)
-			const color = s.color(tile)
-			const patternColor = s.patternColor(tile)
-			
-			
-			if (!toggleColor) {
-				dispatch(setColor(id, patternColor))
-				dispatch(toggleFilled(id))
-				return
-			}
-
-			if (color !== toggleColor) {
-				dispatch(setColor(id, color))
-			} 
-			
-			if (color === toggleColor && toggleFill || color === 'none') {
-				dispatch(toggleFilled(id))
-			}
-		}
-		
-		dispatch(toggleTile)
-		
-	}
-}
-
-// TODO REDO
-// toggles a tile base on tileToggleOptions and validityOptions
-export const toggleTile = function(
-	id, 
-	{ color = null, fill = true } = {}, 
-	validityOptions
-) {
-	return function(dispatch, getState) {
-		const tiles = s.tiles(getState())
-		const tile = s.tile(tiles, id)
-		const tileColor = s.color(tile)
-		const tilePatternColor = s.patternColor(tile)
-		
-		if (!color) {
-			console.log(tilePatternColor)
-			dispatch(setColor(id, tilePatternColor))
-			dispatch(toggleFilled(id))
-			return
-		}
-		
-		if (tileColor !== color) {
-			dispatch(setColor(id, color))
-		} 
-		
-		if (tileColor === color && fill || tileColor === 'none') {
-			dispatch(toggleFilled(id))
-		}
-		
-	}
-}
-
 
 
 // TODO
@@ -199,7 +128,54 @@ export function initialiseGrid() {
 
 
 
-// TRANSFORMATIONS
+// TRANSFORMATIONS TODO
+
+
+
+
+// HIGHER ORDER ACTION CREATORS
+
+// Creates a function to run when a tile is toggled
+export function createTileTogglerGenerator(toggleOptions = {}, dispatch) {
+	const { toggleFill = true, toggleColor = null} = toggleOptions
+	
+	return function(id) {
+		
+		return function() {
+			function toggleTile(dispatch, getState) {			
+				
+				const tiles = s.tiles(getState())
+				const tile = s.tile(tiles, id)
+				const color = s.color(tile)
+				const patternColor = s.patternColor(tile)
+				
+				
+				if (!toggleColor) {
+					dispatch(setColor(id, patternColor))
+					if (toggleFill) {
+						dispatch(toggleFilled(id))
+					}
+					return
+				}
+				
+				if (color !== toggleColor) {
+					dispatch(setColor(id, toggleColor))
+				} 
+				
+				if (color === toggleColor && toggleFill || color === 'none') {
+					dispatch(toggleFilled(id))
+				}
+			}
+			
+			dispatch(toggleTile)
+		}
+		
+	}
+}
+
+
+
+
 
 
 

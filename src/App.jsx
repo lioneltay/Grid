@@ -1,18 +1,39 @@
+// NOT PART OF THE MODULE JUST TESTING IT
+// IMPORTS THE GRID MODULE AND RENDERS A GRID
+// TESTS SOME OF THE METHODS THAT COME WITH THE GRID
+
 import React, { PropTypes } from 'react'
 
-import Grid from 'Grid'
+import GridModule from 'Grid'
 
 
-const newGrid = Grid()
-const GridComponent = newGrid.GridComponent
+const toggleOptions = {
+	toggleFill: true
+}
+
+const validityOptions = {
+	checkFill: true,
+	checkColor: false
+}
+
+const options = { toggleOptions, validityOptions }
+
+
+const newGrid = GridModule(options)
+const Grid = newGrid.Grid
 
 function App({ children }) {
 	return (
 		<div>
 			{children}
-			<GridComponent />
+			<Grid />
+			<button onClick={logStatus}>check</button>
 		</div>
 	)
+}
+
+function logStatus() {
+	console.log(newGrid.query.isCorrect())
 }
 
 
@@ -59,6 +80,8 @@ const testTiles = [
 		"id": 3
 	}
 ]
+
+
 newGrid.z.setHeight(2)
 newGrid.z.setWidth(2)
 newGrid.z.setNumInPattern(2)
@@ -74,7 +97,10 @@ newGrid.z.setUniformColor('red')
 newGrid.z.setUniformPatternColor('green')
 
 newGrid.z.setTiles(testTiles)
-	
+
+newGrid.z.setColor(0, 'red')
+//newGrid.z.setColor(3, 'red')
+
 	
 
 export default App
