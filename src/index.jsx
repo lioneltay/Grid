@@ -9,8 +9,6 @@ import App from './App'
 
 
 ReactDOM.render(
-	<App>
-		hello
-	</App>,
+	<App />,
 	document.querySelector('#app')
 )

@@ -22,7 +22,7 @@ function createGridComponent(store, toggleOptions) {
 	// =============================================
 	// Helper Functions
 	// =============================================
-	function generateTiles({ grid, showFillHelp, showColorHelp, dispatch }) {
+	function generateTiles({ grid, showFillHelp, showColorHelp, reveal, dispatch }) {
 		const tiles = s.tiles(grid)
 		const width = s.width(grid)
 		
@@ -36,6 +36,7 @@ function createGridComponent(store, toggleOptions) {
 					{...tile}
 					showFillHelp={showFillHelp}
 					showColorHelp={showColorHelp}
+					reveal={reveal}
 					size={100/width}
 					onToggle={tileTogglerGenerator(id)}
 				/>
@@ -66,7 +67,8 @@ function createGridComponent(store, toggleOptions) {
 	const mapStateToProps = (state, props) => ({
 		grid: state,
 		showFillHelp: s.showFillHelp(state),
-		showColorHelp: s.showColorHelp(state)
+		showColorHelp: s.showColorHelp(state),
+		reveal: s.reveal(state),
 	})
 
 	Grid = connect(mapStateToProps)(Grid)

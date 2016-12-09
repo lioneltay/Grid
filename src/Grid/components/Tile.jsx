@@ -38,6 +38,8 @@ Tile.propTypes = {
 	showFillHelp: PropTypes.bool.isRequired,
 	showColorHelp: PropTypes.bool.isRequired,
 	
+	reveal: PropTypes.bool.isRequired,
+	
 	onToggle: PropTypes.func.isRequired
 }
 

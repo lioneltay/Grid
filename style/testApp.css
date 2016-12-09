@@ -1,0 +1,52 @@
+.container {
+	border: 1px solid black;
+	margin: 5px;
+	padding: 5px;
+	width: 100%;
+	
+}
+
+
+.table, tr, td {
+	border: 1px solid black;
+}
+
+.testApp {
+	width: 100%;
+	text-align: center
+}
+
+
+.interfaceContainer {
+}
+
+.gridContainer {
+	margin: auto;
+}
+
+.buttonsContainer {
+	margin: 15px;
+}
+
+
+@media all and (min-width: 900px) {
+	.interfaceContainer {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.gridContainer {
+		position: fixed;
+		width: 35%;
+		min-width: 350px;
+		left: 5%;
+		top: 50%;
+		transform: translate(0, -50%)
+	}
+
+	.buttonsContainer {
+		width: 55%;
+		margin-right: 15px;
+	}
+}
+

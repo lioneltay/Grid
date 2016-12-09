@@ -33,8 +33,16 @@ export function colorClass({
 	filledStatus,
 	
 	showFillHelp,
-	showColorHelp
+	showColorHelp,
+	
+	reveal
 }) {
+	if (reveal && patternFilled) {
+		return patternColor
+	} else if (reveal && !patternFilled) {
+		return ''
+	}
+	
 	if (patternFilled && showColorHelp && colorStatus === c.COLORED_INCORRECTLY) {
 		return patternColor
 	}
@@ -60,8 +68,11 @@ export function errorClass({
 	filledStatus,
 	
 	showFillHelp,
-	showColorHelp
+	showColorHelp,
+	
+	reveal
 }) {
+	if (reveal) return ''
 	// Should not be filled
 	if (showFillHelp && filledStatus === c.FILLED_INCORRECTLY) {
 		return 'redError'

@@ -28,8 +28,12 @@ export default function(getState, { checkFilled = true, checkColor = false } = {
 
 	}
 	
-	// TODO
-	query.getTime = function() {}
+	// If you feel like looking into the internals
+	// perhaps the user wants to implement more in depth interactivity
+	query.getState = function() {
+		return getState()
+	}
+	
 	
 	return query
 }

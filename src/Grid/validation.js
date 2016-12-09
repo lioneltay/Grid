@@ -25,10 +25,20 @@ export function validateTile(tile) {
 
 // Checks if the given tiles are valid
 export function validateTiles(tiles) {
-	return tiles.every(tile => validateTile(tile))
+	return tiles.every(validateTile)
 }
 
-// validates options
+// Checks if a color is valid
+export function validateColor(color) {
+	return c.COLORS.indexOf(color) !== -1
+}
+
+// Checks if an array of colors is valid
+export function validateColors(colors) {
+	return colors.every(validateColor)
+}
+
+// validates options (GRID OPTIONS)
 export function validateOptions(options) {
 	const validOptionTypes = {
 		toggleOptions: {

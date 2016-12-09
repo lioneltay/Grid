@@ -2,7 +2,7 @@
 // IMPORTS THE GRID MODULE AND RENDERS A GRID
 // TESTS SOME OF THE METHODS THAT COME WITH THE GRID
 
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 import GridModule from 'Grid'
 
@@ -19,21 +19,104 @@ const validityOptions = {
 const options = { toggleOptions, validityOptions }
 
 
-const newGrid = GridModule(options)
-const Grid = newGrid.Grid
+const g = GridModule(options)
+const Grid = g.Grid
 
-function App({ children }) {
-	return (
-		<div>
-			{children}
-			<Grid />
-			<button onClick={logStatus}>check</button>
-		</div>
-	)
+class App extends Component {
+	constructor(props) {
+		super(props)
+		
+		this.state = g.query.getState()
+	}
+	
+	// Set update cycle to test things
+	componentDidMount() {
+		setInterval(() => this.setState(g.query.getState()), 1000)
+	}
+	
+	render() {
+		return (
+			<div className="testApp">
+				<h1>Grid Test Interface</h1>
+				<h2>Conglomeration of all grid features</h2>
+				
+				<div className="interfaceContainer">
+					<div className="gridContainer">
+						<Grid />
+					</div>
+
+					<div className="buttonsContainer">
+						<div className='container'>
+							<h5>Status</h5>
+							<table>
+								<tbody>
+									<tr>
+										<td>{`Correct: ${g.query.isCorrect()}`}</td>
+										<td>{`FillHelp: ${this.state.showFillHelp}`}</td>
+										<td>{`ColorHelp: ${this.state.showColorHelp}`}</td>
+									</tr>
+									<tr>
+										<td>{`Reveal: ${this.state.reveal}`}</td>
+										<td>{`numInPattern: ${this.state.numInPattern}`}</td>
+										<td>{``}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div className='container'>
+							<h5>Query</h5>
+							<button onClick={() => console.log(g.query.isCorrect())}>isCorrect</button>
+							<button onClick={() => console.log(g.query.getState())}>getState</button>
+						</div>
+
+						<div className='container'>
+							<h5>Help</h5>
+							<button onClick={() => g.help.showFillHelp(true)}>showFillHelp</button>
+							<button onClick={() => g.help.showFillHelp(false)}>removeFillHelp</button>
+							<button onClick={() => g.help.showFillHelp(true, 1000)}>temporaryFillHelp</button>
+							<button onClick={() => g.help.showColorHelp(true)}>showColorHelp</button>
+							<button onClick={() => g.help.showColorHelp(false)}>removeColorHelp</button>
+							<button onClick={() => g.help.showColorHelp(true, 1000)}>temporaryColorHelp</button>
+							<button onClick={() => g.help.reveal(!this.state.reveal)}>reveal</button>
+						</div>
+
+						<div className='container'>
+							<h5>Timer</h5>
+							<button>Not implemented</button>
+						</div>
+
+						<div className='container'>
+							<h5>Init</h5>
+							<button onClick={() => g.init.color.uniformRows(['green', 'yellow', 'blue', 'red', 'orange'])} >UniformRows</button>
+							<button onClick={() => g.init.color.uniformColumns(['green', 'yellow', 'blue', 'red', 'orange'])} >UniformCols</button>
+							<button onClick={() => g.init.color.random(['orange', 'red', 'blue', 'green', 'yellow'])} >RandomColors</button>
+							<button onClick={() => g.init.pattern.random()} >RandomPattern</button>
+						</div>
+
+						<div className='container'>
+							<h5>Transform</h5>
+							<button onClick={g.transform.zShift}>zShift</button>
+							<button onClick={g.transform.zShiftReverse}>zShiftReverse</button>
+							<button onClick={() => g.transform.translate('left', 1)}>translateLEFT</button>
+							<button onClick={() => g.transform.translate('right', 1)}>translateRIGHT</button>
+							<button onClick={() => g.transform.translate('up', 1)}>translateUP</button>
+							<button onClick={() => g.transform.translate('down', 1)}>translateDOWN</button>
+							<button onClick={() => g.transform.reflection('vertical')}>VerticalReflection</button>
+							<button onClick={() => g.transform.reflection('horizontal')}>HorizontalReflection</button>
+							<button onClick={() => g.transform.rotate('clock')}>rotateClock</button>
+							<button onClick={() => g.transform.rotate('anti')}>rotateAnti</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		)
+	}
 }
 
 function logStatus() {
-	console.log(newGrid.query.isCorrect())
+	console.log(g.query.isCorrect())
 }
 
 
@@ -82,24 +165,12 @@ const testTiles = [
 ]
 
 
-newGrid.z.setHeight(2)
-newGrid.z.setWidth(2)
-newGrid.z.setNumInPattern(2)
-newGrid.z.resetTiles()
-newGrid.z.randomisePatternFilled()
-newGrid.z.randomisePatternColors()
-newGrid.z.setFilled(0, true)
-newGrid.z.setFilled(1, true)
-newGrid.z.setFilled(2, true)
-newGrid.z.setFilled(3, true)
-newGrid.z.randomiseColors()
-newGrid.z.setUniformColor('red')
-newGrid.z.setUniformPatternColor('green')
+g.z.setHeight(3)
+g.z.setWidth(4)
+g.z.setNumInPattern(2)
+g.z.resetTiles()
 
-newGrid.z.setTiles(testTiles)
 
-newGrid.z.setColor(0, 'red')
-//newGrid.z.setColor(3, 'red')
 
 	
 

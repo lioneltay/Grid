@@ -1,7 +1,7 @@
 import * as t from '../actionTypes'
 import * as c from '../constants'
 import * as s from '../selectors'
-import { validateTiles } from '../gridHelpers'
+import { validateTiles } from '../validation'
 
 import { 
 	createReducer,

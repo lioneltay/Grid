@@ -17,7 +17,7 @@ export const FILLED_STATUSES = [
 	UNFILLED_INCORRECTLY
 ]
 
-export const COLORS = ['red', 'green', 'blue', 'yellow', 'orange']
+export const COLORS = ['red', 'green', 'blue', 'yellow', 'orange', 'none']
 export const COLORED_CORRECTLY = 'COLORED_CORRECTLY'
 export const COLORED_INCORRECTLY = 'COLORED_INCORRECTLY'
 export const UNCOLORED = 'UNCOLORED'

@@ -1,11 +1,8 @@
 // Creates the Grid Module API
 
 import * as components from './components'
-import * as actionTypes from './actionTypes'
 import * as actions from './actions'
-import * as s from './selectors'
-import * as c from './constants'
-import * as helpers from './gridHelpers'
+import * as helpers from './validation'
 import reducer from './reducers'
 
 
@@ -15,9 +12,12 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { middleware } from 'utils/redux'
 
-
+// API
 import query from './api/query'
 import transform from './api/transform'
+import timer from './api/timer'
+import help from './api/help'
+import init from './api/init'
 
 //===== test imports
 import { bindActionCreators } from 'redux'
@@ -45,8 +45,6 @@ function Grid(options = {}) {
 	
 	const z = bindActionCreators(actions, store.dispatch)
 	
-	
-	
 	// ==================================
 	// ==================================
 	// ==================================
@@ -55,8 +53,11 @@ function Grid(options = {}) {
 
 	return {
 		Grid: components.createGridComponent(store, toggleOptions),
-		transform: transform(),
+		transform: transform(store.getState, store.dispatch),
 		query: query(store.getState, validityOptions),
+		timer: timer(store.getState),
+		help: help(store.getState, store.dispatch),
+		init: init(store.getState, store.dispatch),
 		z
 	}
 }
