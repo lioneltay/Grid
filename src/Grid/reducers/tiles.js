@@ -101,7 +101,6 @@ const tilesReducer = createReducer([], {
 			newTile.id = i
 			newTiles.push(newTile)
 		}
-		console.log('XXXXXXX', newTiles[0] === newTiles[1])
 		return newTiles
 	}
 })

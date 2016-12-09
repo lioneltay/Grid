@@ -13,6 +13,7 @@ export const setTiles = cAC(t.SET_TILES, 'tiles')
 export const setShowFillHelp = cAC(t.SET_SHOW_FILL_HELP, 'showFillHelp')
 export const setShowColorHelp = cAC(t.SET_SHOW_COLOR_HELP, 'showColorHelp')
 export const setReveal = cAC(t.SET_REVEAL, 'reveal')
+export const setTime = cAC(t.SET_TIME, 'time')
 
 export const setFilled = cAC(t.SET_FILLED, 'id', 'filled')
 export const setPatternFilled = cAC(t.SET_PATTERN_FILLED, 'id', 'patternFilled')
@@ -27,18 +28,6 @@ export const setPatternColor = cAC(t.SET_PATTERN_COLOR, 'id', 'patternColor')
 // THUNKS
 // ==========
 
-
-
-
-
-
-
-
-
-
-
-
-
 // Reset grid //TODO
 export const resetTiles = function() {
 	return function(dispatch, getState) {
@@ -49,15 +38,6 @@ export const resetTiles = function() {
 		})
 	}
 }
-
-
-
-
-
-// TRANSFORMATIONS TODO
-
-
-
 
 // HIGHER ORDER ACTION CREATORS
 

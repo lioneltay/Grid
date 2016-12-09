@@ -30,8 +30,13 @@ export default function(getState, { checkFilled = true, checkColor = false } = {
 	
 	// If you feel like looking into the internals
 	// perhaps the user wants to implement more in depth interactivity
+	// THE RETURN VALUE SHOULD NOT BE MUTATED unless you really want to
 	query.getState = function() {
 		return getState()
+	}
+	
+	query.getTime = function() {
+		return s.time(getState())
 	}
 	
 	

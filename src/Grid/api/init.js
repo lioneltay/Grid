@@ -44,6 +44,16 @@ export default function(getState, dispatch) {
 			type: INIT_TYPE,
 		}
 	*/
+	
+	init.params = function({ width, height, tilesInPattern }) {
+		dispatch(actions.setWidth(width))
+		dispatch(actions.setWidth(height))
+		dispatch(actions.setNumInPattern(tilesInPattern))
+		dispatch(actions.resetTiles())
+	}
+	
+	
+	
 	init.color = function() {} //??
 	
 	// Set rows to be a uniform color

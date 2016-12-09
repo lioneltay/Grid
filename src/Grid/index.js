@@ -55,7 +55,7 @@ function Grid(options = {}) {
 		Grid: components.createGridComponent(store, toggleOptions),
 		transform: transform(store.getState, store.dispatch),
 		query: query(store.getState, validityOptions),
-		timer: timer(store.getState),
+		timer: timer(store.getState, store.dispatch),
 		help: help(store.getState, store.dispatch),
 		init: init(store.getState, store.dispatch),
 		z

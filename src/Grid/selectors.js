@@ -10,6 +10,7 @@ export const numInPattern = (grid) => grid.numInPattern
 export const showFillHelp = (grid) => grid.showFillHelp
 export const showColorHelp = (grid) => grid.showColorHelp
 export const reveal = (grid) => grid.reveal
+export const time = (grid) => grid.time
 export const numTiles = (grid) => height(grid) * width(grid)
 
 export const gridTile = (grid, id) => tile(tiles(grid), id)

@@ -58,7 +58,7 @@ class App extends Component {
 									<tr>
 										<td>{`Reveal: ${this.state.reveal}`}</td>
 										<td>{`numInPattern: ${this.state.numInPattern}`}</td>
-										<td>{``}</td>
+										<td>{`time: ${this.state.time}`}</td>
 									</tr>
 								</tbody>
 							</table>
@@ -68,6 +68,7 @@ class App extends Component {
 							<h5>Query</h5>
 							<button onClick={() => console.log(g.query.isCorrect())}>isCorrect</button>
 							<button onClick={() => console.log(g.query.getState())}>getState</button>
+							<button onClick={() => console.log(g.query.getTime())}>getTime</button>
 						</div>
 
 						<div className='container'>
@@ -83,11 +84,16 @@ class App extends Component {
 
 						<div className='container'>
 							<h5>Timer</h5>
-							<button>Not implemented</button>
+							<button onClick={() => g.timer.set(3)}>set</button>
+							<button onClick={() => g.timer.start()}>start</button>
+							<button onClick={() => g.timer.pause()}>pause</button>
+							<button onClick={() => g.timer.deduct(5)}>deduct</button>
+							<button onClick={() => g.timer.addOnZeroCallback(() => console.log('callback'))}>addCallBack</button>
 						</div>
 
 						<div className='container'>
 							<h5>Init</h5>
+							<button onClick={() => g.init.params({ height: 3, width: 3, tilesInPattern: 5 })} >params</button>
 							<button onClick={() => g.init.color.uniformRows(['green', 'yellow', 'blue', 'red', 'orange'])} >UniformRows</button>
 							<button onClick={() => g.init.color.uniformColumns(['green', 'yellow', 'blue', 'red', 'orange'])} >UniformCols</button>
 							<button onClick={() => g.init.color.random(['orange', 'red', 'blue', 'green', 'yellow'])} >RandomColors</button>
@@ -119,6 +125,13 @@ function logStatus() {
 	console.log(g.query.isCorrect())
 }
 
+
+g.timer.addOnZeroCallback(() => console.log('a'))()
+g.timer.addOnZeroCallback(() => console.log('b'))
+g.timer.addOnZeroCallback(() => console.log('c'))()
+g.timer.addOnZeroCallback(() => console.log('d'))
+g.timer.addOnZeroCallback(() => console.log('e'))()
+g.timer.addOnZeroCallback(() => console.log('f'))
 
 
 

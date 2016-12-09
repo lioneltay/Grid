@@ -5,6 +5,7 @@ export const SET_TILES = 'grid/SET_TILES'
 export const SET_SHOW_FILL_HELP = 'grid/SET_SHOW_FILL_HELP'
 export const SET_SHOW_COLOR_HELP = 'grid/SET_SHOW_COLOR_HELP'
 export const SET_REVEAL = 'grid/SET_REVEAL'
+export const SET_TIME = 'grid/SET_TIME'
 export const RESET_TILES = 'grid/RESET_TILES'
 
 export const SET_COLOR = 'grid-tile/SET_COLOR'

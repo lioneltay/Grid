@@ -17,6 +17,7 @@ const gridReducer = combineReducers({
 	showFillHelp: generateSetterReducer(true, t.SET_SHOW_FILL_HELP, 'showFillHelp'),
 	showColorHelp: generateSetterReducer(false, t.SET_SHOW_COLOR_HELP, 'showColorHelp'),
 	reveal: generateSetterReducer(true, t.SET_REVEAL, 'reveal'),
+	time: generateSetterReducer(0, t.SET_TIME, 'time'),
 })
 
 export default gridReducer
